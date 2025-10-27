@@ -40,3 +40,13 @@ app.post("/komik", async (req, res) => {
         res.send(err);
     }
 });
+
+// Endpoint untuk mendapatkan semua data komik
+app.get('/komik', async (req, res) => {
+    try {
+        const komiks = await db.Komik.findAll();
+        res.send(komik);
+    } catch (err) {
+        res.send(err);
+    }
+});
