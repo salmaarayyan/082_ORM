@@ -29,3 +29,14 @@ db.sequelize.sync()
         // Jika gagal konek/sync ke database, tampilkan error
         console.log(err);
     })
+
+// Endpoint untuk menambah data komik baru
+app.post("/komik", async (req, res) => {
+    const data = req.body;
+    try {
+        const komik = await db.Komik.create(data);
+        res.send(komik);
+    } catch (err) {
+        res.send(err);
+    }
+});
